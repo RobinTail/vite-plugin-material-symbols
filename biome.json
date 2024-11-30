@@ -4,7 +4,7 @@
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
-    "ignore": ["dist/", "coverage/"]
+    "ignore": ["dist/", "coverage/", "package.json"]
   },
   "javascript": {
     "globals": ["Bun"]
