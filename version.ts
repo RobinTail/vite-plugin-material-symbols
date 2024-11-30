@@ -2,7 +2,7 @@ import { fail } from "node:assert";
 import { $ } from "bun";
 import { type ReleaseType, inc, valid as isValidVersion } from "semver";
 
-const path = "./packages/merge-sx/package.json";
+const path = "./package.json";
 const variants: ReleaseType[] = [
   "major",
   "premajor",
