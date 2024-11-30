@@ -1,6 +1,6 @@
 # vite-plugin-material-symbols
 
-[![coverage](https://coveralls.io/repos/github/RobinTail/vite-plugin-material-symbols/badge.svg?branch=main)](https://coveralls.io/github/RobinTail/vite-plugin-material-symbols?branch=main)
+[![coverage](https://coveralls.io/repos/github/RobinTail/vite-plugin-material-symbols/badge.svg?branch=main&)](https://coveralls.io/github/RobinTail/vite-plugin-material-symbols?branch=main)
 
 The plugin determines which Material Symbols are used in JSX `<Icon>` tags and substitutes this list in `index.html`
 for selective download from Google CDN, thus reducing the volume of the font downloaded by the user.
