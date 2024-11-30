@@ -1,7 +1,17 @@
 import esquery, { type Literal } from "esquery";
 import type { Plugin } from "vite";
 
-const plugin = (): Plugin => {
+type PluginOptions = {
+  /** @default __MATERIAL_SYMBOLS__ */
+  placeholder: string;
+  /** @default Icon */
+  component: string;
+};
+
+const plugin = ({
+  placeholder = "__MATERIAL_SYMBOLS__",
+  component = "Icon",
+}: Partial<PluginOptions> = {}): Plugin => {
   const registry = new Set<string>();
 
   return {
@@ -11,7 +21,7 @@ const plugin = (): Plugin => {
       if (!ast) return;
       const nodes = esquery.query(
         ast,
-        "CallExpression[callee.name='jsx'][arguments.0.name='Icon'] > .arguments > Property[key.name='children'] Literal",
+        `CallExpression[callee.name='jsx'][arguments.0.name='${component}'] > .arguments > Property[key.name='children'] Literal`,
       ) as unknown as Literal[];
       this.debug({ id, message: "value" });
       for (const { value } of nodes)
@@ -19,7 +29,7 @@ const plugin = (): Plugin => {
     },
     transformIndexHtml: (html) =>
       html.replace(
-        "__MATERIAL_SYMBOLS__",
+        placeholder,
         registry.size
           ? `icon_names=${Array.from(registry.values()).toSorted().join(",")}`
           : "", // dev mode, all icons
