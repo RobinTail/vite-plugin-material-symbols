@@ -14,7 +14,8 @@
     "lint": "bun run biome check",
     "prebuild": "tsc --noEmit",
     "build": "tsdown",
-    "postbuild": "attw --pack --profile esm-only"
+    "postbuild": "attw --pack --profile esm-only",
+    "mdfix": "bunx --bun prettier *.md --write"
   },
   "exports": {
     ".": {
