@@ -52,10 +52,7 @@ describe("Entrypoint", () => {
     it("should replace the placeholder with found icon names in html", () => {
       const result = transformIndexHtml(
         "https://example.com?__MATERIAL_SYMBOLS__",
-        {
-          path: ".",
-          filename: "index.html",
-        },
+        { path: ".", filename: "index.html" },
       );
       expect(result).toBe(
         "https://example.com?icon_names=chevron_right,comment,home",
