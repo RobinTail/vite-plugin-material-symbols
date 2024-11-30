@@ -1,0 +1,246 @@
+{
+  "type": "Program",
+  "start": 0,
+  "end": 604,
+  "body": [
+    {
+      "type": "VariableDeclaration",
+      "start": 189,
+      "end": 419,
+      "kind": "const",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "start": 195,
+          "end": 418,
+          "id": {
+            "type": "Identifier",
+            "start": 195,
+            "end": 199,
+            "name": "Test"
+          },
+          "init": {
+            "type": "ArrowFunctionExpression",
+            "start": 202,
+            "end": 418,
+            "async": false,
+            "expression": true,
+            "generator": false,
+            "params": [],
+            "body": {
+              "type": "CallExpression",
+              "start": 224,
+              "end": 418,
+              "optional": false,
+              "_rollupAnnotations": [
+                { "end": 223, "start": 208, "type": "pure" }
+              ],
+              "callee": {
+                "type": "Identifier",
+                "start": 224,
+                "end": 228,
+                "name": "jsxs"
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "start": 229,
+                  "end": 234,
+                  "value": "div",
+                  "raw": "\"div\""
+                },
+                {
+                  "type": "ObjectExpression",
+                  "start": 236,
+                  "end": 417,
+                  "properties": [
+                    {
+                      "type": "Property",
+                      "start": 238,
+                      "end": 415,
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 238,
+                        "end": 246,
+                        "name": "children"
+                      },
+                      "value": {
+                        "type": "ArrayExpression",
+                        "start": 248,
+                        "end": 415,
+                        "elements": [
+                          {
+                            "type": "CallExpression",
+                            "start": 268,
+                            "end": 299,
+                            "optional": false,
+                            "_rollupAnnotations": [
+                              { "end": 267, "start": 252, "type": "pure" }
+                            ],
+                            "callee": {
+                              "type": "Identifier",
+                              "start": 268,
+                              "end": 271,
+                              "name": "jsx"
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "start": 272,
+                                "end": 276,
+                                "name": "Icon"
+                              },
+                              {
+                                "type": "ObjectExpression",
+                                "start": 278,
+                                "end": 298,
+                                "properties": [
+                                  {
+                                    "type": "Property",
+                                    "start": 280,
+                                    "end": 296,
+                                    "method": false,
+                                    "shorthand": false,
+                                    "computed": false,
+                                    "key": {
+                                      "type": "Identifier",
+                                      "start": 280,
+                                      "end": 288,
+                                      "name": "children"
+                                    },
+                                    "value": {
+                                      "type": "Literal",
+                                      "start": 290,
+                                      "end": 296,
+                                      "value": "home",
+                                      "raw": "\"home\""
+                                    },
+                                    "kind": "init"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "CallExpression",
+                            "start": 319,
+                            "end": 359,
+                            "optional": false,
+                            "_rollupAnnotations": [
+                              { "end": 318, "start": 303, "type": "pure" }
+                            ],
+                            "callee": {
+                              "type": "Identifier",
+                              "start": 319,
+                              "end": 322,
+                              "name": "jsx"
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "start": 323,
+                                "end": 327,
+                                "name": "Icon"
+                              },
+                              {
+                                "type": "ObjectExpression",
+                                "start": 329,
+                                "end": 358,
+                                "properties": [
+                                  {
+                                    "type": "Property",
+                                    "start": 331,
+                                    "end": 356,
+                                    "method": false,
+                                    "shorthand": false,
+                                    "computed": false,
+                                    "key": {
+                                      "type": "Identifier",
+                                      "start": 331,
+                                      "end": 339,
+                                      "name": "children"
+                                    },
+                                    "value": {
+                                      "type": "Literal",
+                                      "start": 341,
+                                      "end": 356,
+                                      "value": "chevron_right",
+                                      "raw": "\"chevron_right\""
+                                    },
+                                    "kind": "init"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "CallExpression",
+                            "start": 379,
+                            "end": 413,
+                            "optional": false,
+                            "_rollupAnnotations": [
+                              { "end": 378, "start": 363, "type": "pure" }
+                            ],
+                            "callee": {
+                              "type": "Identifier",
+                              "start": 379,
+                              "end": 382,
+                              "name": "jsx"
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "start": 383,
+                                "end": 387,
+                                "name": "Icon"
+                              },
+                              {
+                                "type": "ObjectExpression",
+                                "start": 389,
+                                "end": 412,
+                                "properties": [
+                                  {
+                                    "type": "Property",
+                                    "start": 391,
+                                    "end": 410,
+                                    "method": false,
+                                    "shorthand": false,
+                                    "computed": false,
+                                    "key": {
+                                      "type": "Identifier",
+                                      "start": 391,
+                                      "end": 399,
+                                      "name": "children"
+                                    },
+                                    "value": {
+                                      "type": "Literal",
+                                      "start": 401,
+                                      "end": 410,
+                                      "value": "comment",
+                                      "raw": "\"comment\""
+                                    },
+                                    "kind": "init"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "kind": "init"
+                    }
+                  ]
+                }
+              ]
+            },
+            "id": null
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module"
+}

@@ -1,4 +1,7 @@
-import { describe, expect, it } from "bun:test";
+import { describe, expect, it, mock } from "bun:test";
+import { fail } from "node:assert/strict";
+import type { ModuleInfo, PluginContext } from "rollup";
+import ast from "./ast.json";
 import plugin from "./index";
 
 describe("Entrypoint", () => {
@@ -12,6 +15,48 @@ describe("Entrypoint", () => {
       moduleParsed: expect.any(Function),
       name: "material-symbols",
       transformIndexHtml: expect.any(Function),
+    });
+  });
+
+  describe("Operation", () => {
+    const { moduleParsed, transformIndexHtml } = plugin();
+    if (!moduleParsed) fail("no moduleParsed hook");
+    if (typeof moduleParsed !== "function")
+      fail("moduleParsed is not a function");
+    if (!transformIndexHtml) fail("no transformIndexHtml");
+    if (typeof transformIndexHtml !== "function")
+      fail("transformIndexHtml is not a function");
+
+    it("replaces the placeholder with an empty string in dev mode", () => {
+      const result = transformIndexHtml(
+        "https://example.com?__MATERIAL_SYMBOLS__",
+        { path: ".", filename: "index.html" },
+      );
+      expect(result).toBe("https://example.com?");
+    });
+
+    it("should find icon names", () => {
+      const debug = mock();
+      moduleParsed.call(
+        { debug } as unknown as PluginContext,
+        { ast, id: "file.tsx" } as unknown as ModuleInfo,
+      );
+      expect(debug).toHaveBeenCalledTimes(3);
+      expect(debug.mock.calls).toEqual([
+        [{ id: "file.tsx", message: "home" }],
+        [{ id: "file.tsx", message: "chevron_right" }],
+        [{ id: "file.tsx", message: "comment" }],
+      ]);
+    });
+
+    it("should replace the placeholder with found icon names in html", () => {
+      const result = transformIndexHtml(
+        "https://example.com?__MATERIAL_SYMBOLS__",
+        { path: ".", filename: "index.html" },
+      );
+      expect(result).toBe(
+        "https://example.com?icon_names=chevron_right,comment,home",
+      );
     });
   });
 });
