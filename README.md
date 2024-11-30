@@ -28,10 +28,7 @@ And the Material Symbols linked within `index.html` having `__MATERIAL_SYMBOLS__
 <!doctype html>
 <html lang="en">
   <head>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&__MATERIAL_SYMBOLS__"
-      rel="stylesheet"
-    />
+    <link href="__MATERIAL_SYMBOLS__" rel="stylesheet" />
   </head>
   <body>
     <div id="root"></div>
@@ -54,6 +51,8 @@ export default defineConfig({
       // these are defaults:
       component: "Icon",
       placeholder: "__MATERIAL_SYMBOLS__",
+      getUrl: (iconNamesParam) =>
+        `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&${iconNamesParam}`,
     }),
   ],
 });
