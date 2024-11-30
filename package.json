@@ -6,12 +6,16 @@
   "repository": "git@github.com:RobinTail/vite-plugin-material-symbols.git",
   "author": "Robin Tail <robin_tail@me.com>",
   "license": "MIT",
+  "scripts": {
+    "lint": "bun run biome check"
+  },
   "dependencies": {
     "esquery": "^1.6.0"
   },
   "devDependencies": {
     "@tsconfig/bun": "^1.0.7",
     "@types/esquery": "^1.5.4",
+    "biome": "^0.3.3",
     "typescript": "^5.7.2",
     "vite": "^6.0.1"
   }
