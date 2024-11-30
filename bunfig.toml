@@ -1,0 +1,6 @@
+[install]
+peer = true
+registry = { url = "https://registry.npmjs.org", token = "$NPM_KEY" }
+[test]
+coverage = true # always enable coverage
+coverageReporter  = ["text", "lcov"]
