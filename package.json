@@ -9,7 +9,15 @@
   "type": "module",
   "scripts": {
     "lint": "bun run biome check",
-    "build": "bun run build.ts"
+    "prebuild": "tsc --noEmit",
+    "build": "tsdown",
+    "postbuild": "attw --pack --profile esm-only"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
   },
   "peerDependencies": {
     "vite": "^6.0.0"
@@ -18,10 +26,12 @@
     "esquery": "^1.6.0"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.17.0",
     "@biomejs/biome": "1.9.4",
     "@tsconfig/bun": "^1.0.7",
     "@types/bun": "^1.1.14",
     "@types/esquery": "^1.5.4",
+    "tsdown": "^0.3.1",
     "typescript": "^5.7.2"
   }
 }
