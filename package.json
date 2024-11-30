@@ -16,10 +16,10 @@
     "esquery": "^1.6.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@tsconfig/bun": "^1.0.7",
     "@types/bun": "^1.1.14",
     "@types/esquery": "^1.5.4",
-    "biome": "^0.3.3",
-    "typescript": "^5.7.2",
+    "typescript": "^5.7.2"
   }
 }
