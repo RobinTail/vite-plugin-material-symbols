@@ -16,7 +16,7 @@
     "build": "tsdown",
     "postbuild": "attw --pack --profile esm-only",
     "mdfix": "bunx --bun prettier *.md --write",
-    "prepublishOnly": "bun lint && bun run test && bun run build"
+    "prepublishOnly": "bun lint && bun test && bun run build"
   },
   "exports": {
     ".": {
