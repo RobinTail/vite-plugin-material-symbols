@@ -47,3 +47,5 @@ jobs:
         continue-on-error: true
         with:
           github-token: ${{ secrets.github_token }}
+      - name: Build
+        run: bun run build

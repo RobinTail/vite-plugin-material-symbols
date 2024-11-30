@@ -6,8 +6,10 @@
   "repository": "git@github.com:RobinTail/vite-plugin-material-symbols.git",
   "author": "Robin Tail <robin_tail@me.com>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
-    "lint": "bun run biome check"
+    "lint": "bun run biome check",
+    "build": "bun run build.ts"
   },
   "peerDependencies": {
     "vite": "^6.0.0"
