@@ -2,6 +2,11 @@ import esquery, { type Literal } from "esquery";
 import type { Plugin } from "vite";
 
 type PluginOptions = {
+  /**
+   *
+   * @default () => `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined...&${iconNamesParam}`
+   * */
+  getUrl: (iconNamesParam: string) => string;
   /** @default __MATERIAL_SYMBOLS__ */
   placeholder: string;
   /** @default Icon */
@@ -9,8 +14,10 @@ type PluginOptions = {
 };
 
 const plugin = ({
-  placeholder = "__MATERIAL_SYMBOLS__",
   component = "Icon",
+  placeholder = "__MATERIAL_SYMBOLS__",
+  getUrl = (iconNamesParam) =>
+    `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&${iconNamesParam}`,
 }: Partial<PluginOptions> = {}): Plugin => {
   const registry = new Set<string>();
 
@@ -32,9 +39,11 @@ const plugin = ({
     transformIndexHtml: (html) =>
       html.replace(
         placeholder,
-        registry.size
-          ? `icon_names=${Array.from(registry.values()).toSorted().join(",")}`
-          : "", // dev mode, all icons
+        getUrl(
+          registry.size
+            ? `icon_names=${Array.from(registry.values()).toSorted().join(",")}`
+            : "", // dev mode, all icons
+        ),
       ),
   };
 };
