@@ -18,35 +18,49 @@ describe("Entrypoint", () => {
     });
   });
 
-  it("should find icon names and replace the placeholder in html", () => {
+  describe("Operation", () => {
     const { moduleParsed, transformIndexHtml } = plugin();
     if (!moduleParsed) fail("no moduleParsed hook");
     if (typeof moduleParsed !== "function")
       fail("moduleParsed is not a function");
-    const debug = mock();
-    moduleParsed.call(
-      { debug } as unknown as PluginContext,
-      { ast, id: "file.tsx" } as unknown as ModuleInfo,
-    );
-    expect(debug).toHaveBeenCalledTimes(3);
-    expect(debug.mock.calls).toEqual([
-      [{ id: "file.tsx", message: "home" }],
-      [{ id: "file.tsx", message: "chevron_right" }],
-      [{ id: "file.tsx", message: "comment" }],
-    ]);
     if (!transformIndexHtml) fail("no transformIndexHtml");
     if (typeof transformIndexHtml !== "function")
       fail("transformIndexHtml is not a function");
-    const result = transformIndexHtml(
-      "https://example.com?__MATERIAL_SYMBOLS__",
-      {
-        path: ".",
-        filename: "index.html",
-      },
-    );
-    expect(result).toBe(
-      "https://example.com?icon_names=chevron_right,comment,home",
-    );
+
+    it("replaces the placeholder with an empty string in dev mode", () => {
+      const result = transformIndexHtml(
+        "https://example.com?__MATERIAL_SYMBOLS__",
+        { path: ".", filename: "index.html" },
+      );
+      expect(result).toBe("https://example.com?");
+    });
+
+    it("should find icon names", () => {
+      const debug = mock();
+      moduleParsed.call(
+        { debug } as unknown as PluginContext,
+        { ast, id: "file.tsx" } as unknown as ModuleInfo,
+      );
+      expect(debug).toHaveBeenCalledTimes(3);
+      expect(debug.mock.calls).toEqual([
+        [{ id: "file.tsx", message: "home" }],
+        [{ id: "file.tsx", message: "chevron_right" }],
+        [{ id: "file.tsx", message: "comment" }],
+      ]);
+    });
+
+    it("should replace the placeholder with found icon names in html", () => {
+      const result = transformIndexHtml(
+        "https://example.com?__MATERIAL_SYMBOLS__",
+        {
+          path: ".",
+          filename: "index.html",
+        },
+      );
+      expect(result).toBe(
+        "https://example.com?icon_names=chevron_right,comment,home",
+      );
+    });
   });
 });
 
