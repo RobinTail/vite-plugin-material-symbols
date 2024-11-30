@@ -44,7 +44,7 @@ Configuring Vite to use the plugin:
 
 ```ts
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import react from "@vitejs/plugin-react-swc";
 import materialSymbols from "vite-plugin-material-symbols";
 
 export default defineConfig({
