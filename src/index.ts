@@ -23,9 +23,11 @@ const plugin = ({
         ast,
         `CallExpression[callee.name='jsx'][arguments.0.name='${component}'] > .arguments > Property[key.name='children'] Literal`,
       ) as unknown as Literal[];
-      this.debug({ id, message: "value" });
       for (const { value } of nodes)
-        if (typeof value === "string") registry.add(value);
+        if (typeof value === "string") {
+          this.debug({ id, message: value });
+          registry.add(value);
+        }
     },
     transformIndexHtml: (html) =>
       html.replace(
