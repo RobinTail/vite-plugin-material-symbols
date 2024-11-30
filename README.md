@@ -48,7 +48,14 @@ import react from "@vitejs/plugin-react-swc";
 import materialSymbols from "vite-plugin-material-symbols";
 
 export default defineConfig({
-  plugins: [react(), materialSymbols()],
+  plugins: [
+    react(),
+    materialSymbols({
+      // these are defaults:
+      component: "Icon",
+      placeholder: "__MATERIAL_SYMBOLS__",
+    }),
+  ],
 });
 ```
 
