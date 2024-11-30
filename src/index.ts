@@ -3,7 +3,8 @@ import type { Plugin } from "vite";
 
 type PluginOptions = {
   /**
-   *
+   * Material Symbols CSS Provider. Default: outlined, no infill, 24px, weight 400
+   * @see https://fonts.google.com/icons?icon.set=Material+Symbols
    * @default () => `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined...&${iconNamesParam}`
    * */
   getUrl: (iconNamesParam: string) => string;
