@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "Selective loading of Material Symbols for production",
   "main": "dist/index.js",
-  "repository": "git@github.com:RobinTail/vite-plugin-material-symbols.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/RobinTail/vite-plugin-material-symbols.git"
+  },
   "author": "Robin Tail <robin_tail@me.com>",
   "license": "MIT",
   "type": "module",
