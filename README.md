@@ -51,6 +51,8 @@ export default defineConfig({
       // these are defaults:
       component: "Icon",
       placeholder: "__MATERIAL_SYMBOLS__",
+      getUrl: (iconNamesParam) =>
+        `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&${iconNamesParam}`,
     }),
   ],
 });
