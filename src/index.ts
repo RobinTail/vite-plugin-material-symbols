@@ -1,6 +1,10 @@
 import esquery from "esquery";
 import type { Plugin } from "vite";
-import { defaultUrlProvider, isStringLiteral } from "./helpers.ts";
+import {
+  defaultUrlProvider,
+  isStringLiteral,
+  makeSelector,
+} from "./helpers.ts";
 
 type PluginOptions = {
   /**
@@ -34,10 +38,7 @@ const plugin = ({
     moduleParsed: function ({ id, ast }) {
       if (!ast) return;
       const nodes = esquery
-        .query(
-          ast,
-          `CallExpression[callee.name='jsx'][arguments.0.name='${component}'] > .arguments > Property[key.name='children'] Literal`,
-        )
+        .query(ast, makeSelector(component))
         .filter(isStringLiteral);
       for (const { value } of nodes) {
         this.debug({ id, message: value });
