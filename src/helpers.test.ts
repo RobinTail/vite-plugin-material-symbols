@@ -1,6 +1,6 @@
 import { describe, expect, it } from "bun:test";
 import type { Node } from "estree";
-import { isStringLiteral } from "./helpers.ts";
+import { defaultUrlProvider, isStringLiteral } from "./helpers.ts";
 
 describe("Helpers", () => {
   describe("isStringLiteral", () => {
@@ -12,6 +12,14 @@ describe("Helpers", () => {
       { type: "Identifier", name: "test" },
     ])("invalidates others %#", (subject) => {
       expect(isStringLiteral(subject)).toBeFalse();
+    });
+  });
+
+  describe("defaultUrlProvider", () => {
+    it("returns the default Material Symbols CDN URL with supplied param injected", () => {
+      expect(defaultUrlProvider("test")).toBe(
+        "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&test",
+      );
     });
   });
 });
