@@ -48,6 +48,22 @@ Add the following line to the `<head>` of your `index.html`:
 <link href="__MATERIAL_SYMBOLS__" rel="stylesheet" />
 ```
 
+Ensure assigning the [required](https://developers.google.com/fonts/docs/material_symbols) `className` to your icons.
+When using Material UI it can be [globally configured](https://mui.com/material-ui/customization/theme-components/):
+
+```ts
+const theme = createTheme({
+  components: {
+    MuiIcon: {
+      defaultProps: {
+        /* @see https://fonts.google.com/icons?icon.set=Material+Symbols */
+        className: "material-symbols-outlined", // or -rounded or -sharp
+      },
+    },
+  },
+});
+```
+
 ## Usage
 
 Consider a sample React component using MUI Icon:
