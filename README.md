@@ -2,8 +2,17 @@
 
 [![coverage](https://coveralls.io/repos/github/RobinTail/vite-plugin-material-symbols/badge.svg?branch=main&)](https://coveralls.io/github/RobinTail/vite-plugin-material-symbols?branch=main)
 
-The plugin determines which Material Symbols are used in JSX `<Icon>` tags and substitutes this list in `index.html`
-for selective download from Google CDN, thus reducing the volume of the font downloaded by the user.
+[Material Symbols](https://fonts.google.com/icons?icon.set=Material+Symbols) is a font-based alternative to SVG icons.
+Compared to [Material Icons](https://www.npmjs.com/package/@mui/icons-material), which are packed into a bundle,
+thereby increasing its size, font-based symbols are loaded on the user side upon request.
+
+However, the difficulty is that they are either loaded all at once, which is also quite a large volume, or it is
+necessary to specify a list of `icon_names` for filtering the font, which must also be sorted. Therefore, it is
+necessary to maintain the list of icons used within the application.
+
+The plugin automates that job by determining which icons are used in the source code of the application and during the
+build substitutes that list into `index.html` for selective download from Google Font CDN, thus reducing the volume of
+the font downloaded by the user.
 
 ## Requirements
 
