@@ -94,6 +94,7 @@ getUrl:
   type: function
   description: Material Symbols CSS Provider
   arguments: [string] # icon_names parameter
+  exampleArguments: ["icon_names=chevron_right,comment,home"] # can be empty string
   returns: string # the URL
   default: (iconNamesParam) => `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&${iconNamesParam}`
 ```
