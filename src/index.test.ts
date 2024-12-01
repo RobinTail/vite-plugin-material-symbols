@@ -1,7 +1,7 @@
 import { describe, expect, it, mock } from "bun:test";
 import { fail } from "node:assert/strict";
 import type { ModuleInfo, PluginContext } from "rollup";
-import ast from "./ast.json";
+import ast from "../tools/ast.json";
 import plugin from "./index";
 
 describe("Entrypoint", () => {
@@ -66,8 +66,8 @@ describe("Entrypoint", () => {
 describe("System", () => {
   it("should replace the placeholder in index.html", async () => {
     // @see https://github.com/oven-sh/bun/issues/3768
-    await Bun.$`NODE_ENV=production bun --bun vite build`;
-    const result = await Bun.file("./dist/index.html").text();
+    await Bun.$`NODE_ENV=production bun --bun vite -c tools/vite.config.ts build`;
+    const result = await Bun.file("./dist/tools/index.html").text();
     expect(
       result.includes("icon_names=chevron_right,comment,home"),
     ).toBeTruthy();
