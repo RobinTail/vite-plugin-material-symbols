@@ -2,6 +2,10 @@
 
 ## Version 0
 
+### v0.2.1
+
+- Clarifying Node.js 20 or 22 as the system requirement.
+
 ### v0.2.0
 
 - The `placeholder` is now a complete URL of the Material Symbols CDN;
