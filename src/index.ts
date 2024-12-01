@@ -1,5 +1,6 @@
-import esquery, { type Literal } from "esquery";
+import esquery from "esquery";
 import type { Plugin } from "vite";
+import { isStringLiteral } from "./helpers.ts";
 
 type PluginOptions = {
   /**
@@ -36,11 +37,11 @@ const plugin = ({
       const nodes = esquery.query(
         ast,
         `CallExpression[callee.name='jsx'][arguments.0.name='${component}'] > .arguments > Property[key.name='children'] Literal`,
-      ) as unknown as Literal[];
-      for (const { value } of nodes)
-        if (typeof value === "string") {
-          this.debug({ id, message: value });
-          registry.add(value);
+      );
+      for (const node of nodes)
+        if (isStringLiteral(node)) {
+          this.debug({ id, message: node.value });
+          registry.add(node.value);
         }
     },
     transformIndexHtml: (html) =>
