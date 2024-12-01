@@ -1,6 +1,8 @@
 # vite-plugin-material-symbols
 
+![License](https://img.shields.io/github/license/robintail/vite-plugin-material-symbols)
 [![coverage](https://coveralls.io/repos/github/RobinTail/vite-plugin-material-symbols/badge.svg?branch=main&)](https://coveralls.io/github/RobinTail/vite-plugin-material-symbols?branch=main)
+![Downloads](https://img.shields.io/npm/dw/vite-plugin-material-symbols)
 
 [Material Symbols](https://fonts.google.com/icons?icon.set=Material+Symbols) is a font-based alternative to SVG icons.
 Compared to [Material Icons](https://www.npmjs.com/package/@mui/icons-material), which are packed into a bundle,
