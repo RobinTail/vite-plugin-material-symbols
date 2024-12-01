@@ -72,6 +72,11 @@ After running `vite build`, that link will have the URL of Material Symbols havi
 />
 ```
 
+## Limitations
+
+The plugin substitutes the `icon_names` URL parameter **ONLY** in `vite build` mode. In `vite dev` (serve) mode
+`index.html` is transformed before the application source code, so that all Material Symbols are loaded.
+
 ## Configuration
 
 The plugin accepts an object of the following options:
