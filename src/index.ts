@@ -34,15 +34,16 @@ const plugin = ({
     enforce: "pre",
     moduleParsed: function ({ id, ast }) {
       if (!ast) return;
-      const nodes = esquery.query(
-        ast,
-        `CallExpression[callee.name='jsx'][arguments.0.name='${component}'] > .arguments > Property[key.name='children'] Literal`,
-      );
-      for (const node of nodes)
-        if (isStringLiteral(node)) {
-          this.debug({ id, message: node.value });
-          registry.add(node.value);
-        }
+      const nodes = esquery
+        .query(
+          ast,
+          `CallExpression[callee.name='jsx'][arguments.0.name='${component}'] > .arguments > Property[key.name='children'] Literal`,
+        )
+        .filter(isStringLiteral);
+      for (const { value } of nodes) {
+        this.debug({ id, message: value });
+        registry.add(value);
+      }
     },
     transformIndexHtml: (html) =>
       html.replace(
