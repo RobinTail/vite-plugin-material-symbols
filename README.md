@@ -8,8 +8,7 @@ for selective download from Google CDN, thus reducing the volume of the font dow
 ## Requirements
 
 - Node.js `^20 || ^22`;
-- Vite `^6.0.0` (though, it might work with v5 as well);
-- Ensure having `"lib": ["ES2023"]` in your `tsconfig.node.json`.
+- Vite `^6.0.0` (though, it might work with v5 as well).
 
 ## Installation
 
