@@ -2,6 +2,12 @@
 
 ## Version 0
 
+### v0.2.2
+
+- Performance improvement:
+  - using `for..of` and `Array::push()` instead of `Array::from()`.
+- Extracted helpers to make the plugin code more readable.
+
 ### v0.2.1
 
 - Improving documentation;
