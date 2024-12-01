@@ -4,7 +4,7 @@
 
 ### v0.2.1
 
-- Clarifying Node.js 20 or 22 as the system requirement.
+- Clarifying Node.js 20 and 22 as the system requirement.
 
 ### v0.2.0
 
