@@ -3,6 +3,7 @@ import type { Node } from "estree";
 import {
   defaultUrlProvider,
   isStringLiteral,
+  makeIconNamesParam,
   makeSelector,
 } from "./helpers.ts";
 
@@ -31,6 +32,17 @@ describe("Helpers", () => {
     it("return a selector having component name injected", () => {
       expect(makeSelector("Test")).toBe(
         "CallExpression[callee.name='jsx'][arguments.0.name='Test'] > .arguments > Property[key.name='children'] Literal",
+      );
+    });
+  });
+
+  describe("makeIconNamesParam", () => {
+    it("returns empty string for empty registry", () => {
+      expect(makeIconNamesParam(new Set<string>())).toBe("");
+    });
+    it("returns the formatted URL param for non-empty registry", () => {
+      expect(makeIconNamesParam(new Set<string>(["one", "two", "three"]))).toBe(
+        "icon_names=one,three,two",
       );
     });
   });
