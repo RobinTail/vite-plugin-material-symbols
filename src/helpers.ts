@@ -16,3 +16,13 @@ export const makeSelector = (component: string) =>
     ".arguments",
     "Property[key.name='children'] Literal",
   ].join(" > ");
+
+/** @see https://www.measurethat.net/Benchmarks/Show/12088/3/new-array-from-vs-slice-vs-push-vs-index-vs-spread */
+export const makeIconNamesParam = (registry: Set<string>) => {
+  if (!registry.size) return ""; // dev mode, all icons
+  const arr: string[] = [];
+  for (const item of registry.values()) {
+    arr.push(item);
+  }
+  return `icon_names=${arr.toSorted().join(",")}`;
+};

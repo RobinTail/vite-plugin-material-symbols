@@ -3,6 +3,7 @@ import type { Plugin } from "vite";
 import {
   defaultUrlProvider,
   isStringLiteral,
+  makeIconNamesParam,
   makeSelector,
 } from "./helpers.ts";
 
@@ -46,14 +47,7 @@ const plugin = ({
       }
     },
     transformIndexHtml: (html) =>
-      html.replace(
-        placeholder,
-        getUrl(
-          registry.size
-            ? `icon_names=${Array.from(registry.values()).toSorted().join(",")}`
-            : "", // dev mode, all icons
-        ),
-      ),
+      html.replace(placeholder, getUrl(makeIconNamesParam(registry))),
   };
 };
 
