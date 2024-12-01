@@ -5,7 +5,18 @@
 The plugin determines which Material Symbols are used in JSX `<Icon>` tags and substitutes this list in `index.html`
 for selective download from Google CDN, thus reducing the volume of the font downloaded by the user.
 
-## Demo
+## Requirements
+
+- Node.js `^20 || ^22`;
+- Vite `^6.0.0` (though, it might work with v5 as well).
+
+## Installation
+
+```shell
+yarn add -D vite-plugin-material-symbols
+```
+
+## Usage
 
 Consider a sample React component using MUI Icon:
 

@@ -29,6 +29,9 @@
     "dist",
     "*.md"
   ],
+  "engines": {
+    "node": "^20 || ^22"
+  },
   "peerDependencies": {
     "vite": "^6.0.0"
   },
