@@ -68,8 +68,6 @@ describe("System", () => {
     // @see https://github.com/oven-sh/bun/issues/3768
     await Bun.$`NODE_ENV=production bun --bun vite -c tools/vite.config.ts build`;
     const result = await Bun.file("./dist/tools/index.html").text();
-    expect(
-      result.includes("icon_names=chevron_right,comment,home"),
-    ).toBeTruthy();
+    expect(result.includes("icon_names=chevron_right,comment,home")).toBeTrue();
   });
 });
