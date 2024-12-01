@@ -1,6 +1,6 @@
 import esquery from "esquery";
 import type { Plugin } from "vite";
-import { isStringLiteral } from "./helpers.ts";
+import { defaultUrlProvider, isStringLiteral } from "./helpers.ts";
 
 type PluginOptions = {
   /**
@@ -24,8 +24,7 @@ type PluginOptions = {
 const plugin = ({
   placeholder = "__MATERIAL_SYMBOLS__",
   component = "Icon",
-  getUrl = (iconNamesParam) =>
-    `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&${iconNamesParam}`,
+  getUrl = defaultUrlProvider,
 }: Partial<PluginOptions> = {}): Plugin => {
   const registry = new Set<string>();
 

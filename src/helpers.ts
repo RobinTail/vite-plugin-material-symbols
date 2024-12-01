@@ -6,3 +6,6 @@ export const isStringLiteral = (
   subject.type === "Literal" &&
   "value" in subject &&
   typeof subject.value === "string";
+
+export const defaultUrlProvider = (iconNamesParam: string) =>
+  `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&${iconNamesParam}`;
