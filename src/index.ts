@@ -8,9 +8,15 @@ type PluginOptions = {
    * @default () => `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined...&${iconNamesParam}`
    * */
   getUrl: (iconNamesParam: string) => string;
-  /** @default __MATERIAL_SYMBOLS__ */
+  /**
+   * The text within index.html that should be replaced
+   * @default __MATERIAL_SYMBOLS__
+   * */
   placeholder: string;
-  /** @default Icon */
+  /**
+   * The name of JSX component to obtain the icon names from
+   * @default Icon
+   * */
   component: string;
 };
 

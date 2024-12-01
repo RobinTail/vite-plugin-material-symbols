@@ -21,8 +21,29 @@ the font downloaded by the user.
 
 ## Installation
 
+Install the plugin using your favourite package manager, for example:
+
 ```shell
 yarn add -D vite-plugin-material-symbols
+```
+
+Add it to the Vite configuration:
+
+```ts
+// vite.config.ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import materialSymbols from "vite-plugin-material-symbols";
+
+export default defineConfig({
+  plugins: [react(), materialSymbols()],
+});
+```
+
+Add the following line to the `<head>` of your `index.html`:
+
+```html
+<link href="__MATERIAL_SYMBOLS__" rel="stylesheet" />
 ```
 
 ## Usage
@@ -42,47 +63,32 @@ const Component = () => (
 );
 ```
 
-And the Material Symbols linked within `index.html` having `__MATERIAL_SYMBOLS__` placeholder:
-
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <link href="__MATERIAL_SYMBOLS__" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/index.tsx"></script>
-  </body>
-</html>
-```
-
-Configuring Vite to use the plugin:
-
-```ts
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import materialSymbols from "vite-plugin-material-symbols";
-
-export default defineConfig({
-  plugins: [
-    react(),
-    materialSymbols({
-      // these are defaults:
-      component: "Icon",
-      placeholder: "__MATERIAL_SYMBOLS__",
-      getUrl: (iconNamesParam) =>
-        `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&${iconNamesParam}`,
-    }),
-  ],
-});
-```
-
-After running `vite build`, that link will have the substituted list of sorted icon names:
+After running `vite build`, that link will have the URL of Material Symbols having the list of required icon names:
 
 ```html
 <link
   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=chevron_right,comment,home"
   rel="stylesheet"
 />
+```
+
+## Configuration
+
+The plugin accepts an object of the following options:
+
+```yaml
+component:
+  type: string
+  description: The name of JSX component to obtain the icon names from
+  default: Icon
+placeholder:
+  type: string
+  description: The text within index.html that should be replaced
+  default: __MATERIAL_SYMBOLS__
+getUrl:
+  type: function
+  description: Material Symbols CSS Provider
+  arguments: [string] # icon_names parameter
+  returns: string # the URL
+  default: (iconNamesParam) => `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&${iconNamesParam}`
 ```
