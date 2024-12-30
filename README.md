@@ -42,11 +42,7 @@ export default defineConfig({
 });
 ```
 
-Add the following line to the `<head>` of your `index.html`:
-
-```html
-<link href="__MATERIAL_SYMBOLS__" rel="stylesheet" />
-```
+Ensure having `<head>` tag in your `index.html`.
 
 Ensure assigning the [required](https://developers.google.com/fonts/docs/material_symbols) `className` to your icons.
 When using Material UI it can be [globally configured](https://mui.com/material-ui/customization/theme-components/):
@@ -81,7 +77,7 @@ const Component = () => (
 );
 ```
 
-After running `vite build`, that link will have the URL of Material Symbols having the list of required icon names:
+After running `vite build`, the `<link>` tag will be added to your `index.html` having the list of required icon names:
 
 ```html
 <link
@@ -104,10 +100,6 @@ component:
   type: string
   description: The name of JSX component to obtain the icon names from
   default: Icon
-placeholder:
-  type: string
-  description: The text within index.html that should be replaced
-  default: __MATERIAL_SYMBOLS__
 getUrl:
   type: function
   description: Material Symbols CSS Provider

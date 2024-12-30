@@ -15,11 +15,6 @@ type PluginOptions = {
    * */
   getUrl: (iconNamesParam: string) => string;
   /**
-   * The text within index.html that should be replaced
-   * @default __MATERIAL_SYMBOLS__
-   * */
-  placeholder: string;
-  /**
    * The name of JSX component to obtain the icon names from
    * @default Icon
    * */
@@ -27,7 +22,6 @@ type PluginOptions = {
 };
 
 const plugin = ({
-  placeholder = "__MATERIAL_SYMBOLS__",
   component = "Icon",
   getUrl = defaultUrlProvider,
 }: Partial<PluginOptions> = {}): Plugin => {
@@ -46,8 +40,19 @@ const plugin = ({
         registry.add(value);
       }
     },
-    transformIndexHtml: (html) =>
-      html.replace(placeholder, getUrl(makeIconNamesParam(registry))),
+    transformIndexHtml: (html) => ({
+      html,
+      tags: [
+        {
+          injectTo: "head",
+          tag: "link",
+          attrs: {
+            rel: "stylesheet",
+            href: getUrl(makeIconNamesParam(registry)),
+          },
+        },
+      ],
+    }),
   };
 };
 

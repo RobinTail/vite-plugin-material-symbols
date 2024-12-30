@@ -29,12 +29,25 @@ describe("Entrypoint", () => {
 
     it("replaces the placeholder with an empty string in dev mode", () => {
       const result = transformIndexHtml(
-        `<link rel="stylesheet" href="__MATERIAL_SYMBOLS__" />`,
-        { path: ".", filename: "index.html" },
+        `<html lang="en"><head><title>test</title></head></html>`,
+        {
+          path: ".",
+          filename: "index.html",
+        },
       );
-      expect(result).toBe(
-        `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&" />`,
-      );
+      expect(result).toEqual({
+        html: `<html lang="en"><head><title>test</title></head></html>`,
+        tags: [
+          {
+            injectTo: "head",
+            tag: "link",
+            attrs: {
+              rel: "stylesheet",
+              href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&",
+            },
+          },
+        ],
+      });
     });
 
     it("should find icon names", () => {
@@ -53,12 +66,25 @@ describe("Entrypoint", () => {
 
     it("should replace the placeholder with found icon names in html", () => {
       const result = transformIndexHtml(
-        `<link rel="stylesheet" href="__MATERIAL_SYMBOLS__" />`,
-        { path: ".", filename: "index.html" },
+        `<html lang="en"><head><title>test</title></head></html>`,
+        {
+          path: ".",
+          filename: "index.html",
+        },
       );
-      expect(result).toBe(
-        `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=chevron_right,comment,home" />`,
-      );
+      expect(result).toEqual({
+        html: `<html lang="en"><head><title>test</title></head></html>`,
+        tags: [
+          {
+            injectTo: "head",
+            tag: "link",
+            attrs: {
+              rel: "stylesheet",
+              href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=chevron_right,comment,home",
+            },
+          },
+        ],
+      });
     });
   });
 });
