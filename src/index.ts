@@ -45,7 +45,11 @@ const plugin = ({
       tags: [
         {
           injectTo: "head",
-          tag: `<link rel="stylesheet" href="${getUrl(makeIconNamesParam(registry))}" />`,
+          tag: "link",
+          attrs: {
+            rel: "stylesheet",
+            href: getUrl(makeIconNamesParam(registry)),
+          },
         },
       ],
     }),
