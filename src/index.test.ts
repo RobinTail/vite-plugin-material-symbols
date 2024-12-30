@@ -66,10 +66,7 @@ describe("Entrypoint", () => {
     it("injects the link with found icon names into html", () => {
       const result = transformIndexHtml(
         `<html lang="en"><head><title>test</title></head></html>`,
-        {
-          path: ".",
-          filename: "index.html",
-        },
+        { path: ".", filename: "index.html" },
       );
       expect(result).toEqual({
         html: `<html lang="en"><head><title>test</title></head></html>`,
