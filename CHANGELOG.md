@@ -2,6 +2,13 @@
 
 ## Version 0
 
+### v0.3.0
+
+- Fixed the leading slash problem in `dev` mode (serve mode);
+- The `placeholder` option removed;
+- Placing the `<link>` tag into `index.html` is no longer required:
+  - The plugin will add `<link>` tag to the `<head>` by itself.
+
 ### v0.2.2
 
 - Performance improvement:
