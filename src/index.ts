@@ -19,11 +19,18 @@ type PluginOptions = {
    * @default Icon
    * */
   component: string;
+  /**
+   * Enables higher priority to loading symbols
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload
+   * @default false
+   */
+  preload: boolean;
 };
 
 const plugin = ({
   component = "Icon",
   getUrl = defaultUrlProvider,
+  preload = false,
 }: Partial<PluginOptions> = {}): Plugin => {
   const registry = new Set<string>();
 
@@ -47,7 +54,8 @@ const plugin = ({
           injectTo: "head",
           tag: "link",
           attrs: {
-            rel: "stylesheet",
+            rel: preload ? "preload" : "stylesheet",
+            ...(preload && { as: "style" }),
             href: getUrl(makeIconNamesParam(registry)),
           },
         },
