@@ -27,7 +27,7 @@ describe("Entrypoint", () => {
     if (typeof transformIndexHtml !== "function")
       fail("transformIndexHtml is not a function");
 
-    it("replaces the placeholder with an empty string in dev mode", () => {
+    it("injects the link to all symbols in dev mode", () => {
       const result = transformIndexHtml(
         `<html lang="en"><head><title>test</title></head></html>`,
         {
@@ -64,7 +64,7 @@ describe("Entrypoint", () => {
       ]);
     });
 
-    it("should replace the placeholder with found icon names in html", () => {
+    it("injects the link with found icon names into html", () => {
       const result = transformIndexHtml(
         `<html lang="en"><head><title>test</title></head></html>`,
         {
@@ -90,10 +90,14 @@ describe("Entrypoint", () => {
 });
 
 describe("System", () => {
-  it("should replace the placeholder in index.html", async () => {
+  it("injects the link into index.html", async () => {
     // @see https://github.com/oven-sh/bun/issues/3768
     await Bun.$`NODE_ENV=production bun --bun vite -c tools/vite.config.ts build`;
     const result = await Bun.file("./dist/tools/index.html").text();
-    expect(result.includes("icon_names=chevron_right,comment,home")).toBeTrue();
+    expect(
+      result.includes(
+        `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;icon_names=chevron_right,comment,home">`,
+      ),
+    ).toBeTrue();
   });
 });
