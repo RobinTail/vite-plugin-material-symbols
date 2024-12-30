@@ -1,5 +1,5 @@
 import esquery from "esquery";
-import type { Plugin } from "vite";
+import type { HtmlTagDescriptor, Plugin } from "vite";
 import {
   defaultUrlProvider,
   isStringLiteral,
@@ -47,20 +47,24 @@ const plugin = ({
         registry.add(value);
       }
     },
-    transformIndexHtml: (html) => ({
-      html,
-      tags: [
+    transformIndexHtml: (html) => {
+      const href = getUrl(makeIconNamesParam(registry));
+      const tags: HtmlTagDescriptor[] = [
         {
           injectTo: "head",
           tag: "link",
-          attrs: {
-            rel: preload ? "preload" : "stylesheet",
-            ...(preload && { as: "style" }),
-            href: getUrl(makeIconNamesParam(registry)),
-          },
+          attrs: { rel: "stylesheet", href },
         },
-      ],
-    }),
+      ];
+      if (preload) {
+        tags.push({
+          injectTo: "head-prepend",
+          tag: "link",
+          attrs: { rel: "preload", as: "style", href },
+        });
+      }
+      return { html, tags };
+    },
   };
 };
 
