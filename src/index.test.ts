@@ -30,10 +30,7 @@ describe("Entrypoint", () => {
     it("injects the link to all symbols in dev mode", () => {
       const result = transformIndexHtml(
         `<html lang="en"><head><title>test</title></head></html>`,
-        {
-          path: ".",
-          filename: "index.html",
-        },
+        { path: ".", filename: "index.html" },
       );
       expect(result).toEqual({
         html: `<html lang="en"><head><title>test</title></head></html>`,
@@ -43,7 +40,9 @@ describe("Entrypoint", () => {
             tag: "link",
             attrs: {
               rel: "stylesheet",
-              href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&",
+              href:
+                "https://fonts.googleapis.com/css2?" +
+                "family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&",
             },
           },
         ],
@@ -80,7 +79,10 @@ describe("Entrypoint", () => {
             tag: "link",
             attrs: {
               rel: "stylesheet",
-              href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=chevron_right,comment,home",
+              href:
+                "https://fonts.googleapis.com/css2?" +
+                "family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&" +
+                "icon_names=chevron_right,comment,home",
             },
           },
         ],
@@ -96,7 +98,10 @@ describe("System", () => {
     const result = await Bun.file("./dist/tools/index.html").text();
     expect(
       result.includes(
-        `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;icon_names=chevron_right,comment,home">`,
+        `<link rel="stylesheet" ` +
+          `href="https://fonts.googleapis.com/css2?` +
+          `family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;` +
+          `icon_names=chevron_right,comment,home">`,
       ),
     ).toBeTrue();
   });
