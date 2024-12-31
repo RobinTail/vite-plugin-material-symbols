@@ -2,6 +2,14 @@
 
 ## Version 0
 
+### v0.4.0
+
+- New option: `preload`, boolean:
+  - Enables higher priority for loading symbols;
+  - Disabled by default; More information:
+    - https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload
+    - https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preconnect
+
 ### v0.3.0
 
 - Fixed the leading slash problem in `dev` mode (serve mode);

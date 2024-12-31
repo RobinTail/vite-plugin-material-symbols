@@ -1,5 +1,5 @@
 import esquery from "esquery";
-import type { Plugin } from "vite";
+import type { HtmlTagDescriptor, Plugin } from "vite";
 import {
   defaultUrlProvider,
   isStringLiteral,
@@ -19,11 +19,19 @@ type PluginOptions = {
    * @default Icon
    * */
   component: string;
+  /**
+   * Enables higher priority for loading symbols
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preconnect
+   * @default false
+   */
+  preload: boolean;
 };
 
 const plugin = ({
   component = "Icon",
   getUrl = defaultUrlProvider,
+  preload = false,
 }: Partial<PluginOptions> = {}): Plugin => {
   const registry = new Set<string>();
 
@@ -40,19 +48,31 @@ const plugin = ({
         registry.add(value);
       }
     },
-    transformIndexHtml: (html) => ({
-      html,
-      tags: [
+    transformIndexHtml: (html) => {
+      const href = getUrl(makeIconNamesParam(registry));
+      const tags: HtmlTagDescriptor[] = [
         {
           injectTo: "head",
           tag: "link",
-          attrs: {
-            rel: "stylesheet",
-            href: getUrl(makeIconNamesParam(registry)),
-          },
+          attrs: { rel: "stylesheet", href },
         },
-      ],
-    }),
+      ];
+      if (preload) {
+        tags.push(
+          {
+            injectTo: "head-prepend",
+            tag: "link",
+            attrs: { rel: "preload", as: "style", href },
+          },
+          {
+            injectTo: "head-prepend",
+            tag: "link",
+            attrs: { rel: "preconnect", href: "https://fonts.gstatic.com" },
+          },
+        );
+      }
+      return { html, tags };
+    },
   };
 };
 

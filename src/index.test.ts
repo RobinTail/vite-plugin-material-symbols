@@ -18,8 +18,8 @@ describe("Entrypoint", () => {
     });
   });
 
-  describe("Operation", () => {
-    const { moduleParsed, transformIndexHtml } = plugin();
+  describe.each([false, true])("Operation %#", (preload) => {
+    const { moduleParsed, transformIndexHtml } = plugin({ preload });
     if (!moduleParsed) fail("no moduleParsed hook");
     if (typeof moduleParsed !== "function")
       fail("moduleParsed is not a function");
@@ -32,21 +32,7 @@ describe("Entrypoint", () => {
         `<html lang="en"><head><title>test</title></head></html>`,
         { path: ".", filename: "index.html" },
       );
-      expect(result).toEqual({
-        html: `<html lang="en"><head><title>test</title></head></html>`,
-        tags: [
-          {
-            injectTo: "head",
-            tag: "link",
-            attrs: {
-              rel: "stylesheet",
-              href:
-                "https://fonts.googleapis.com/css2?" +
-                "family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&",
-            },
-          },
-        ],
-      });
+      expect(result).toMatchSnapshot();
     });
 
     it("should find icon names", () => {
@@ -68,22 +54,7 @@ describe("Entrypoint", () => {
         `<html lang="en"><head><title>test</title></head></html>`,
         { path: ".", filename: "index.html" },
       );
-      expect(result).toEqual({
-        html: `<html lang="en"><head><title>test</title></head></html>`,
-        tags: [
-          {
-            injectTo: "head",
-            tag: "link",
-            attrs: {
-              rel: "stylesheet",
-              href:
-                "https://fonts.googleapis.com/css2?" +
-                "family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&" +
-                "icon_names=chevron_right,comment,home",
-            },
-          },
-        ],
-      });
+      expect(result).toMatchSnapshot();
     });
   });
 });
