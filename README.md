@@ -109,6 +109,6 @@ getUrl:
   default: (iconNamesParam) => `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&${iconNamesParam}`
 preload:
   type: boolean
-  description: Enables higher priority to loading symbols
+  description: Enables higher priority for loading symbols
   default: false
 ```

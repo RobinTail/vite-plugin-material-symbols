@@ -20,8 +20,9 @@ type PluginOptions = {
    * */
   component: string;
   /**
-   * Enables higher priority to loading symbols
+   * Enables higher priority for loading symbols
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preconnect
    * @default false
    */
   preload: boolean;
@@ -57,11 +58,18 @@ const plugin = ({
         },
       ];
       if (preload) {
-        tags.push({
-          injectTo: "head-prepend",
-          tag: "link",
-          attrs: { rel: "preload", as: "style", href },
-        });
+        tags.push(
+          {
+            injectTo: "head-prepend",
+            tag: "link",
+            attrs: { rel: "preload", as: "style", href },
+          },
+          {
+            injectTo: "head-prepend",
+            tag: "link",
+            attrs: { rel: "preconnect", href: "https://fonts.gstatic.com" },
+          },
+        );
       }
       return { html, tags };
     },
