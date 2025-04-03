@@ -51,7 +51,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "semver": "^7.6.3",
-    "tsdown": "^0.6.0",
+    "tsdown": "^0.7.3",
     "typescript": "^5.7.2"
   },
   "keywords": [
