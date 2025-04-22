@@ -8,5 +8,5 @@ export default defineConfig({
   format: ["esm"],
   minify: true,
   clean: true,
-  dts: { exclude: "*", include: "./src/index.ts" },
+  dts: true,
 });
