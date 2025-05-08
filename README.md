@@ -18,7 +18,7 @@ the font downloaded by the user.
 
 ## Requirements
 
-- Node.js `^20 || ^22`;
+- Node.js `^20 || ^22 || ^24`;
 - Vite `^6.0.0` (though, it might work with v5 as well).
 
 ## Installation
