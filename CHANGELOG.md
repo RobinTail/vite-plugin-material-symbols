@@ -2,6 +2,10 @@
 
 ## Version 0
 
+### v0.5.0
+
+- Supporting Node 24.
+
 ### v0.4.0
 
 - New option: `preload`, boolean:
