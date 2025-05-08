@@ -30,7 +30,7 @@
     "*.md"
   ],
   "engines": {
-    "node": "^20 || ^22"
+    "node": "^20 || ^22 || ^24"
   },
   "peerDependencies": {
     "vite": "^6.0.0"
