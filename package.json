@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.0",
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.0.4",
     "@tsconfig/bun": "^1.0.7",
     "@types/bun": "^1.1.14",
     "@types/esquery": "^1.5.4",
