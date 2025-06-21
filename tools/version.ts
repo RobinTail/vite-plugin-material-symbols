@@ -1,6 +1,6 @@
 import { fail } from "node:assert";
 import { $ } from "bun";
-import { type ReleaseType, inc, valid as isValidVersion } from "semver";
+import { inc, valid as isValidVersion, type ReleaseType } from "semver";
 
 const path = "./package.json";
 const variants: ReleaseType[] = [
