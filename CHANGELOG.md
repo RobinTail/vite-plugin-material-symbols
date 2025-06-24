@@ -2,6 +2,10 @@
 
 ## Version 0
 
+### v0.6.0
+
+- Supporting Vite 7.
+
 ### v0.5.0
 
 - Supporting Node 24.
