@@ -28,7 +28,8 @@ describe("Entrypoint", () => {
       fail("transformIndexHtml is not a function");
 
     it("injects the link to all symbols in dev mode", () => {
-      const result = transformIndexHtml(
+      const result = transformIndexHtml.call(
+        { debug: mock() } as unknown as PluginContext,
         `<html lang="en"><head><title>test</title></head></html>`,
         { path: ".", filename: "index.html" },
       );
@@ -50,7 +51,8 @@ describe("Entrypoint", () => {
     });
 
     it("injects the link with found icon names into html", () => {
-      const result = transformIndexHtml(
+      const result = transformIndexHtml.call(
+        { debug: mock() } as unknown as PluginContext,
         `<html lang="en"><head><title>test</title></head></html>`,
         { path: ".", filename: "index.html" },
       );
