@@ -39,20 +39,20 @@
     "esquery": "^1.6.0"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.18.0",
+    "@arethetypeswrong/cli": "^0.18.2",
     "@biomejs/biome": "2.0.5",
-    "@tsconfig/bun": "^1.0.7",
-    "@types/bun": "^1.1.14",
+    "@tsconfig/bun": "^1.0.8",
+    "@types/bun": "^1.2.17",
     "@types/esquery": "^1.5.4",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "@types/semver": "^7.5.8",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@types/semver": "^7.7.0",
     "@vitejs/plugin-react-swc": "^3.10.2",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "semver": "^7.6.3",
-    "tsdown": "^0.12.0",
-    "typescript": "^5.7.2"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "semver": "^7.7.2",
+    "tsdown": "^0.12.8",
+    "typescript": "^5.8.3"
   },
   "keywords": [
     "css",
