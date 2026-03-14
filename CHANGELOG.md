@@ -2,6 +2,12 @@
 
 ## Version 0
 
+### v0.7.0
+
+- Supporting Vite 8;
+- Drop Vite 6 and 7 support;
+- Drop Node 20 support.
+
 ### v0.6.0
 
 - Supporting Vite 7.

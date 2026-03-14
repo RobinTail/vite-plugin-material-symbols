@@ -1,4 +1,5 @@
 import esquery from "esquery";
+import type { Node } from "estree";
 import type { HtmlTagDescriptor, Plugin } from "vite";
 import {
   defaultUrlProvider,
@@ -38,12 +39,14 @@ const plugin = ({
   return {
     name: "material-symbols",
     enforce: "pre",
-    moduleParsed: function ({ id, ast }) {
-      if (!ast) return;
-      const nodes = esquery
-        .query(ast, makeSelector(component))
-        .filter(isStringLiteral);
-      for (const { value } of nodes) {
+    moduleParsed: function ({ id, code }) {
+      if (!code) return;
+      if (!/.([jt])sx?$/i.test(id)) return; // @todo make it configurable
+      const ast = this.parse(code);
+      const selector = makeSelector(component);
+      const literals = esquery.query(ast as Node, selector);
+      const strings = literals.filter(isStringLiteral);
+      for (const { value } of strings) {
         this.debug({ id, message: value });
         registry.add(value);
       }

@@ -10,4 +10,5 @@ export default defineConfig({
   minify: true,
   clean: true,
   dts: true,
+  attw: { profile: "esm-only", level: "error" },
 });
