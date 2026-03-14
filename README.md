@@ -19,7 +19,7 @@ the font downloaded by the user.
 ## Requirements
 
 - Node.js `^20 || ^22 || ^24`;
-- Vite `^6 || ^7`.
+- Vite `^8` (use the plugin version 0.6 for Vite 6 and 7);
 
 ## Installation
 
@@ -34,7 +34,7 @@ Add it to the Vite configuration:
 ```ts
 // vite.config.ts
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
 import materialSymbols from "vite-plugin-material-symbols";
 
 export default defineConfig({
