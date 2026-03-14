@@ -14,7 +14,6 @@
     "lint": "bun run biome check",
     "prebuild": "tsc --noEmit",
     "build": "tsdown",
-    "postbuild": "attw --pack --profile esm-only",
     "mdfix": "bunx --bun prettier *.md --write",
     "version": "bun run tools/version.ts",
     "prepublishOnly": "bun lint && bun test && bun run build"
@@ -36,10 +35,10 @@
     "vite": "^6.0.0 || ^7.0.0 || ^8.0.0"
   },
   "dependencies": {
-    "esquery": "^1.6.0"
+    "esquery": "^1.7.0"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.18.2",
+    "@arethetypeswrong/core": "^0.18.2",
     "@biomejs/biome": "2.4.6",
     "@tsconfig/bun": "^1.0.8",
     "@types/bun": "^1.2.17",
@@ -47,11 +46,11 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@types/semver": "^7.7.0",
-    "@vitejs/plugin-react-swc": "^4.0.0",
+    "@vitejs/plugin-react": "^6.0.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "semver": "^7.7.2",
-    "tsdown": "^0.21.0",
+    "tsdown": "^0.21.2",
     "typescript": "^5.8.3"
   },
   "keywords": [

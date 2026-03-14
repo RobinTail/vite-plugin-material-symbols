@@ -31,7 +31,7 @@ describe("Helpers", () => {
   describe("makeSelector", () => {
     it("return a selector having component name injected", () => {
       expect(makeSelector("Test")).toBe(
-        "CallExpression[callee.name='jsx'][arguments.0.name='Test'] > .arguments > Property[key.name='children'] Literal",
+        "CallExpression[callee.name=/jsx/][arguments.0.name='Test'] > .arguments > Property[key.name='children'] Literal",
       );
     });
   });

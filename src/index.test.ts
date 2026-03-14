@@ -1,6 +1,6 @@
 import { describe, expect, it, mock } from "bun:test";
 import { fail } from "node:assert/strict";
-import type { ModuleInfo, PluginContext } from "rollup";
+import type { ModuleInfo, PluginContext } from "rolldown";
 import ast from "../tools/ast.json";
 import plugin from "./index";
 
@@ -39,8 +39,8 @@ describe("Entrypoint", () => {
     it("should find icon names", () => {
       const debug = mock();
       moduleParsed.call(
-        { debug } as unknown as PluginContext,
-        { ast, id: "file.tsx" } as unknown as ModuleInfo,
+        { debug, parse: () => ast } as unknown as PluginContext,
+        { id: "file.tsx", code: "test" } as unknown as ModuleInfo,
       );
       expect(debug).toHaveBeenCalledTimes(3);
       expect(debug.mock.calls).toEqual([
