@@ -17,8 +17,6 @@ on:
 
 jobs:
   publish:
-    permissions:
-      id-token: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -29,3 +27,5 @@ jobs:
       - name: Install dependencies
         run: bun install
       - run: bun publish --tag ${{ inputs.tag }}
+        env:
+          NPM_KEY: ${{secrets.NPM_KEY}}
