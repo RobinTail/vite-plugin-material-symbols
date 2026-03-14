@@ -13,7 +13,7 @@
   "scripts": {
     "lint": "bun run biome check",
     "prebuild": "tsc --noEmit",
-    "build": "tsdown",
+    "build": "bunx --bun tsdown",
     "mdfix": "bunx --bun prettier *.md --write",
     "version": "bun run tools/version.ts",
     "prepublishOnly": "bun lint && bun test && bun run build"
