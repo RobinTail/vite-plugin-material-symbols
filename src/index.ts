@@ -1,6 +1,6 @@
 import esquery from "esquery";
-import type { HtmlTagDescriptor, Plugin } from "vite";
 import type { Node } from "estree";
+import type { HtmlTagDescriptor, Plugin } from "vite";
 import {
   defaultUrlProvider,
   isStringLiteral,
