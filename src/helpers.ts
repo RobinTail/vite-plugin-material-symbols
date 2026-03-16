@@ -10,10 +10,9 @@ export const isStringLiteral = (
 export const defaultUrlProvider = (iconNamesParam: string) =>
   `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&${iconNamesParam}`;
 
-/** @todo make callee name configurable */
-export const makeSelector = (component: string) =>
+export const makeSelector = (jsxNodeRegex: RegExp, component: string) =>
   [
-    `CallExpression[callee.name=/jsx/][arguments.0.name='${component}']`,
+    `CallExpression[callee.name=/${jsxNodeRegex.source}/${jsxNodeRegex.flags}][arguments.0.name='${component}']`,
     ".arguments",
     "Property[key.name='children'] Literal",
   ].join(" > ");

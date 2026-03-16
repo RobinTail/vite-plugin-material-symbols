@@ -15,6 +15,11 @@ type PluginOptions = {
    * */
   moduleIdRegex: RegExp;
   /**
+   * The regex to match JSX nodes that should be processed in parsed AST (e.g. "jsx", "_jsx" or "jsxs")
+   * @default /jsx/
+   * */
+  jsxNodeRegex: RegExp;
+  /**
    * Material Symbols CSS Provider. Default: outlined, no infill, 24px, weight 400
    * @see https://fonts.google.com/icons?icon.set=Material+Symbols
    * @default () => `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined...&${iconNamesParam}`
@@ -36,6 +41,7 @@ type PluginOptions = {
 
 const plugin = ({
   moduleIdRegex = /.([jt])sx?$/i,
+  jsxNodeRegex = /jsx/,
   component = "Icon",
   getUrl = defaultUrlProvider,
   preload = false,
@@ -49,7 +55,7 @@ const plugin = ({
       if (!code) return;
       if (!moduleIdRegex.test(id)) return;
       const ast = this.parse(code);
-      const selector = makeSelector(component);
+      const selector = makeSelector(jsxNodeRegex, component);
       const literals = esquery.query(ast as Node, selector);
       const strings = literals.filter(isStringLiteral);
       for (const { value } of strings) {

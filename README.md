@@ -102,6 +102,10 @@ moduleIdRegex:
   type: RegExp
   description: The regex to match module IDs that should be processed for finding icon names
   default: /\.([jt])sx?$/i # *.js, *.jsx, *.ts, *.tsx
+jsxNodeRegex:
+  type: RegExp
+  description: The regex to match JSX nodes that should be processed in parsed AST (e.g. "jsx", "_jsx" or "jsxs")
+  default: /jsx/
 component:
   type: string
   description: The name of JSX component to obtain the icon names from
