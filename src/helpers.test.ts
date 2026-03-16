@@ -44,15 +44,15 @@ describe("Helpers", () => {
 
   describe("addIconNamesParam", () => {
     it("returns empty string for empty registry", () => {
-      expect(addIconNamesParam(new Set<string>(), "https://example.com/")).toBe(
+      expect(addIconNamesParam("https://example.com/", new Set<string>())).toBe(
         "https://example.com/",
       );
     });
     it("returns the comma separated names from non-empty registry", () => {
       expect(
         addIconNamesParam(
-          new Set<string>(["one", "two", "three"]),
           "https://example.com",
+          new Set<string>(["one", "two", "three"]),
         ),
       ).toBe("https://example.com/?icon_names=one,three,two");
     });

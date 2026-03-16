@@ -30,7 +30,7 @@ export const makeSelector = (
  * @see https://www.measurethat.net/Benchmarks/Show/12088/3/new-array-from-vs-slice-vs-push-vs-index-vs-spread
  * @see https://www.measurethat.net/Benchmarks/Show/27622/0/sort-vs-tosorted-vs-spread-and-sort-vs-just-spread
  * */
-export const addIconNamesParam = (registry: Set<string>, url: string) => {
+export const addIconNamesParam = (url: string, registry: Set<string>) => {
   const target = new URL(url);
   if (registry.size) {
     const arr: string[] = [];

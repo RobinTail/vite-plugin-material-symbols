@@ -64,7 +64,7 @@ const plugin = ({
       }
     },
     transformIndexHtml: (html) => {
-      const href = addIconNamesParam(registry, fontUrl).toString();
+      const href = addIconNamesParam(fontUrl, registry).toString();
       const tags: HtmlTagDescriptor[] = [
         {
           injectTo: "head",
