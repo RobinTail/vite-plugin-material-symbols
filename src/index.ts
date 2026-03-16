@@ -13,7 +13,7 @@ type PluginOptions = {
    * The regex to match module IDs that should be processed for finding icon names
    * @default /\.([jt])sx?$/i
    * */
-  moduleIdRegex?: RegExp;
+  moduleIdRegex: RegExp;
   /**
    * Material Symbols CSS Provider. Default: outlined, no infill, 24px, weight 400
    * @see https://fonts.google.com/icons?icon.set=Material+Symbols
