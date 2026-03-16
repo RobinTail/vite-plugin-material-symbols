@@ -2,9 +2,9 @@ import esquery from "esquery";
 import type { Node } from "estree";
 import type { HtmlTagDescriptor, Plugin } from "vite";
 import {
+  addIconNamesParam,
   defaultFontUrl,
   isStringLiteral,
-  addIconNamesParam,
   makeSelector,
 } from "./helpers.ts";
 

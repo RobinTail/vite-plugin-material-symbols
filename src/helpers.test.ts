@@ -1,9 +1,9 @@
 import { describe, expect, it } from "bun:test";
 import type { Node } from "estree";
 import {
+  addIconNamesParam,
   defaultFontUrl,
   isStringLiteral,
-  addIconNamesParam,
   makeSelector,
 } from "./helpers.ts";
 
