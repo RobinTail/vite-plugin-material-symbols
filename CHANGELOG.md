@@ -6,7 +6,8 @@
 
 - Added the following configuration options for flexibility:
   - `moduleIdRegex` — the regex to match module IDs that should be processed for finding icon names;
-  - `jsxNodeRegex` — The regex to match JSX nodes that should be processed in parsed AST.
+  - `jsxNodeRegex` — The regex to match JSX nodes that should be processed in parsed AST;
+- The option `component` now also can be a regex to match multiple component names.
 
 ### v0.7.0
 

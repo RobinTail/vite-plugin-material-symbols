@@ -26,10 +26,10 @@ type PluginOptions = {
    * */
   getUrl: (iconNamesParam: string) => string;
   /**
-   * The name of JSX component to obtain the icon names from
+   * The name of JSX component to get the icon names from (or regex to match the component name)
    * @default Icon
    * */
-  component: string;
+  component: string | RegExp;
   /**
    * Enables higher priority for loading symbols
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload

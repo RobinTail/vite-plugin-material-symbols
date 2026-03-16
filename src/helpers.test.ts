@@ -34,6 +34,12 @@ describe("Helpers", () => {
         "CallExpression[callee.name=/jsx/][arguments.0.name='Test'] > .arguments > Property[key.name='children'] Literal",
       );
     });
+
+    it("supports regex component name", () => {
+      expect(makeSelector(/jsxs/i, /Test/i)).toBe(
+        "CallExpression[callee.name=/jsxs/i][arguments.0.name=/Test/i] > .arguments > Property[key.name='children'] Literal",
+      );
+    });
   });
 
   describe("makeIconNamesParam", () => {
