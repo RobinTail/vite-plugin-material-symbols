@@ -10,6 +10,11 @@ import {
 
 type PluginOptions = {
   /**
+   * The regex to match module IDs that should be processed for finding icon names
+   * @default /\.([jt])sx?$/i
+   * */
+  moduleIdRegex?: RegExp;
+  /**
    * Material Symbols CSS Provider. Default: outlined, no infill, 24px, weight 400
    * @see https://fonts.google.com/icons?icon.set=Material+Symbols
    * @default () => `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined...&${iconNamesParam}`
@@ -30,6 +35,7 @@ type PluginOptions = {
 };
 
 const plugin = ({
+  moduleIdRegex = /.([jt])sx?$/i,
   component = "Icon",
   getUrl = defaultUrlProvider,
   preload = false,
@@ -41,7 +47,7 @@ const plugin = ({
     enforce: "pre",
     moduleParsed: function ({ id, code }) {
       if (!code) return;
-      if (!/.([jt])sx?$/i.test(id)) return; // @todo make it configurable
+      if (!moduleIdRegex.test(id)) return;
       const ast = this.parse(code);
       const selector = makeSelector(component);
       const literals = esquery.query(ast as Node, selector);

@@ -98,6 +98,10 @@ The plugin substitutes the `icon_names` URL parameter **ONLY** in `vite build` m
 The plugin accepts an object of the following options:
 
 ```yaml
+moduleIdRegex:
+  type: RegExp
+  description: The regex to match module IDs that should be processed for finding icon names
+  default: /\.([jt])sx?$/i # *.js, *.jsx, *.ts, *.tsx
 component:
   type: string
   description: The name of JSX component to obtain the icon names from
