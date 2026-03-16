@@ -10,16 +10,26 @@ import {
 
 type PluginOptions = {
   /**
+   * The regex to match module IDs that should be processed for finding icon names
+   * @default /\.([jt])sx?$/i
+   * */
+  moduleIdRegex: RegExp;
+  /**
+   * The regex to match JSX nodes that should be processed in parsed AST (e.g. "jsx", "_jsx" or "jsxs")
+   * @default /jsx/
+   * */
+  jsxNodeRegex: RegExp;
+  /**
    * Material Symbols CSS Provider. Default: outlined, no infill, 24px, weight 400
    * @see https://fonts.google.com/icons?icon.set=Material+Symbols
    * @default () => `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined...&${iconNamesParam}`
    * */
   getUrl: (iconNamesParam: string) => string;
   /**
-   * The name of JSX component to obtain the icon names from
+   * The name of JSX component to get the icon names from (or regex to match the component name)
    * @default Icon
    * */
-  component: string;
+  component: string | RegExp;
   /**
    * Enables higher priority for loading symbols
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload
@@ -30,6 +40,8 @@ type PluginOptions = {
 };
 
 const plugin = ({
+  moduleIdRegex = /.([jt])sx?$/i,
+  jsxNodeRegex = /jsx/,
   component = "Icon",
   getUrl = defaultUrlProvider,
   preload = false,
@@ -41,9 +53,9 @@ const plugin = ({
     enforce: "pre",
     moduleParsed: function ({ id, code }) {
       if (!code) return;
-      if (!/.([jt])sx?$/i.test(id)) return; // @todo make it configurable
+      if (!moduleIdRegex.test(id)) return;
       const ast = this.parse(code);
-      const selector = makeSelector(component);
+      const selector = makeSelector(jsxNodeRegex, component);
       const literals = esquery.query(ast as Node, selector);
       const strings = literals.filter(isStringLiteral);
       for (const { value } of strings) {

@@ -30,8 +30,14 @@ describe("Helpers", () => {
 
   describe("makeSelector", () => {
     it("return a selector having component name injected", () => {
-      expect(makeSelector("Test")).toBe(
+      expect(makeSelector(/jsx/, "Test")).toBe(
         "CallExpression[callee.name=/jsx/][arguments.0.name='Test'] > .arguments > Property[key.name='children'] Literal",
+      );
+    });
+
+    it("supports regex component name", () => {
+      expect(makeSelector(/jsxs/i, /Test/i)).toBe(
+        "CallExpression[callee.name=/jsxs/i][arguments.0.name=/Test/i] > .arguments > Property[key.name='children'] Literal",
       );
     });
   });
