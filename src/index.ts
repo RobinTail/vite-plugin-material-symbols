@@ -26,6 +26,11 @@ type PluginOptions = {
    * */
   fontUrl: string;
   /**
+   * The name of the query parameter to add to the fontUrl
+   * @default "icon_names"
+   * */
+  paramName: string;
+  /**
    * The name of JSX component to get the icon names from (or regex to match the component name)
    * @default Icon
    * */
@@ -44,6 +49,7 @@ const plugin = ({
   jsxNodeRegex = /jsx/,
   component = "Icon",
   fontUrl = defaultFontUrl,
+  paramName = "icon_names",
   preload = false,
 }: Partial<PluginOptions> = {}): Plugin => {
   const registry = new Set<string>();
@@ -64,7 +70,7 @@ const plugin = ({
       }
     },
     transformIndexHtml: (html) => {
-      const href = addIconNamesParam(fontUrl, registry).toString();
+      const href = addIconNamesParam(fontUrl, paramName, registry).toString();
       const tags: HtmlTagDescriptor[] = [
         {
           injectTo: "head",
