@@ -7,8 +7,8 @@ export const isStringLiteral = (
   "value" in subject &&
   typeof subject.value === "string";
 
-export const defaultUrlProvider = (iconNamesParam: string) =>
-  `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&${iconNamesParam}`;
+export const defaultFontUrl =
+  "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0";
 
 export const makeSelector = (
   jsxNodeRegex: RegExp,
@@ -30,9 +30,12 @@ export const makeSelector = (
  * @see https://www.measurethat.net/Benchmarks/Show/12088/3/new-array-from-vs-slice-vs-push-vs-index-vs-spread
  * @see https://www.measurethat.net/Benchmarks/Show/27622/0/sort-vs-tosorted-vs-spread-and-sort-vs-just-spread
  * */
-export const makeIconNamesParam = (registry: Set<string>) => {
-  if (!registry.size) return ""; // dev mode, all icons
-  const arr: string[] = [];
-  for (const item of registry.values()) arr.push(item);
-  return `icon_names=${arr.toSorted().join(",")}`;
+export const addIconNamesParam = (registry: Set<string>, url: string) => {
+  const target = new URL(url);
+  if (registry.size) {
+    const arr: string[] = [];
+    for (const item of registry.values()) arr.push(item);
+    target.searchParams.append("icon_names", arr.toSorted().join(","));
+  }
+  return decodeURIComponent(target.toString());
 };

@@ -2,9 +2,9 @@ import esquery from "esquery";
 import type { Node } from "estree";
 import type { HtmlTagDescriptor, Plugin } from "vite";
 import {
-  defaultUrlProvider,
+  defaultFontUrl,
   isStringLiteral,
-  makeIconNamesParam,
+  addIconNamesParam,
   makeSelector,
 } from "./helpers.ts";
 
@@ -22,9 +22,9 @@ type PluginOptions = {
   /**
    * Material Symbols CSS Provider. Default: outlined, no infill, 24px, weight 400
    * @see https://fonts.google.com/icons?icon.set=Material+Symbols
-   * @default () => `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined...&${iconNamesParam}`
+   * @default https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0
    * */
-  getUrl: (iconNamesParam: string) => string;
+  fontUrl: string;
   /**
    * The name of JSX component to get the icon names from (or regex to match the component name)
    * @default Icon
@@ -43,7 +43,7 @@ const plugin = ({
   moduleIdRegex = /.([jt])sx?$/i,
   jsxNodeRegex = /jsx/,
   component = "Icon",
-  getUrl = defaultUrlProvider,
+  fontUrl = defaultFontUrl,
   preload = false,
 }: Partial<PluginOptions> = {}): Plugin => {
   const registry = new Set<string>();
@@ -64,7 +64,7 @@ const plugin = ({
       }
     },
     transformIndexHtml: (html) => {
-      const href = getUrl(makeIconNamesParam(registry));
+      const href = addIconNamesParam(registry, fontUrl).toString();
       const tags: HtmlTagDescriptor[] = [
         {
           injectTo: "head",

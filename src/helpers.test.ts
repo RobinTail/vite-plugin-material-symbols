@@ -1,9 +1,9 @@
 import { describe, expect, it } from "bun:test";
 import type { Node } from "estree";
 import {
-  defaultUrlProvider,
+  defaultFontUrl,
   isStringLiteral,
-  makeIconNamesParam,
+  addIconNamesParam,
   makeSelector,
 } from "./helpers.ts";
 
@@ -20,10 +20,10 @@ describe("Helpers", () => {
     });
   });
 
-  describe("defaultUrlProvider", () => {
-    it("returns the default Material Symbols CDN URL with supplied param injected", () => {
-      expect(defaultUrlProvider("test")).toBe(
-        "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&test",
+  describe("defaultFontUrl", () => {
+    it("equals the default Material Symbols CDN URL", () => {
+      expect(defaultFontUrl).toBe(
+        "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0",
       );
     });
   });
@@ -42,14 +42,19 @@ describe("Helpers", () => {
     });
   });
 
-  describe("makeIconNamesParam", () => {
+  describe("addIconNamesParam", () => {
     it("returns empty string for empty registry", () => {
-      expect(makeIconNamesParam(new Set<string>())).toBe("");
-    });
-    it("returns the formatted URL param for non-empty registry", () => {
-      expect(makeIconNamesParam(new Set<string>(["one", "two", "three"]))).toBe(
-        "icon_names=one,three,two",
+      expect(addIconNamesParam(new Set<string>(), "https://example.com/")).toBe(
+        "https://example.com/",
       );
+    });
+    it("returns the comma separated names from non-empty registry", () => {
+      expect(
+        addIconNamesParam(
+          new Set<string>(["one", "two", "three"]),
+          "https://example.com",
+        ),
+      ).toBe("https://example.com/?icon_names=one,three,two");
     });
   });
 });
