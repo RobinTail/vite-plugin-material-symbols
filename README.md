@@ -110,13 +110,15 @@ component:
   type: string | RegExp
   description: The name of JSX component to get the icon names from (or regex to match the component name)
   default: Icon
-getUrl:
-  type: function
+fontUrl:
+  type: string
   description: Material Symbols CSS Provider
-  arguments: [string] # icon_names parameter
-  exampleArguments: ["icon_names=chevron_right,comment,home"] # can be empty string
-  returns: string # the URL
-  default: (iconNamesParam) => `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&${iconNamesParam}`
+  # Standard settings: Outlined, no infill, 24px, weight 400
+  default: https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0
+paramName:
+  type: string
+  description: The name of the query parameter to add to the fontUrl
+  default: icon_names
 preload:
   type: boolean
   description: Enables higher priority for loading symbols

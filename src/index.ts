@@ -22,7 +22,7 @@ type PluginOptions = {
   /**
    * Material Symbols CSS Provider. Default: outlined, no infill, 24px, weight 400
    * @see https://fonts.google.com/icons?icon.set=Material+Symbols
-   * @default https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0
+   * @default "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
    * */
   fontUrl: string;
   /**
@@ -32,7 +32,7 @@ type PluginOptions = {
   paramName: string;
   /**
    * The name of JSX component to get the icon names from (or regex to match the component name)
-   * @default Icon
+   * @default "Icon"
    * */
   component: string | RegExp;
   /**
