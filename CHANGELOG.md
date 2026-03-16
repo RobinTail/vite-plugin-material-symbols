@@ -2,6 +2,13 @@
 
 ## Version 0
 
+### v0.8.0
+
+- Replaced `getUrl` option with two new ones:
+  - `fontUrl` (string): Material Symbols CSS Provider;
+  - `paramName` (string): The name of the query parameter to add to the `fontUrl` (default: "icon_names");
+  - The plugin will automatically add the query parameter with the icon names list to the font URL.
+
 ### v0.7.1
 
 - Added the following configuration options for flexibility:
