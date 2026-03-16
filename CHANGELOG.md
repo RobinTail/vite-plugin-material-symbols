@@ -2,6 +2,12 @@
 
 ## Version 0
 
+### v0.7.1
+
+- Added the following configuration options for flexibility:
+  - `moduleIdRegex` — the regex to match module IDs that should be processed for finding icon names;
+  - `jsxNodeRegex` — The regex to match JSX nodes that should be processed in parsed AST.
+
 ### v0.7.0
 
 - Supporting Vite 8;
