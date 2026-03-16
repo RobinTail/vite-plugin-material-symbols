@@ -28,7 +28,7 @@ the font downloaded by the user.
 Install the plugin using your favourite package manager, for example:
 
 ```shell
-yarn add -D vite-plugin-material-symbols
+pnpm add -D vite-plugin-material-symbols
 ```
 
 Add it to the Vite configuration:
