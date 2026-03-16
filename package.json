@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-material-symbols",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Selective loading of Material Symbols for production",
   "main": "dist/index.js",
   "repository": {
