@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/core": "^0.18.2",
-    "@biomejs/biome": "2.4.9",
+    "@biomejs/biome": "2.4.10",
     "@tsconfig/bun": "^1.0.8",
     "@types/bun": "^1.2.17",
     "@types/esquery": "^1.5.4",
