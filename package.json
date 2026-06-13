@@ -68,6 +68,7 @@
     "icon",
     "font-icons",
     "vite",
-    "vitejs"
+    "vitejs",
+    "vite-plugin"
   ]
 }
