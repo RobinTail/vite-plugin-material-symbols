@@ -1,6 +1,6 @@
 import { describe, expect, it, mock } from "bun:test";
 import { fail } from "node:assert/strict";
-import type { ModuleInfo, PluginContext, RolldownError } from "rolldown";
+import type { ModuleInfo, PluginContext } from "rolldown";
 import ast from "../tools/ast.json";
 import plugin from "./index";
 
@@ -26,24 +26,10 @@ describe("Entrypoint", () => {
     if (!transformIndexHtml) fail("no transformIndexHtml");
     if (typeof transformIndexHtml !== "function")
       fail("transformIndexHtml is not a function");
-    const ctx = {
-      debug: mock(),
-      error: mock((e: string | RolldownError) => {
-        throw e;
-      }),
-      info: mock(),
-      warn: mock(),
-      meta: {
-        rollupVersion: "",
-        rolldownVersion: "",
-        viteVersion: "",
-        watchMode: false,
-      },
-    };
 
     it("injects the link to all symbols in dev mode", () => {
       const result = transformIndexHtml.call(
-        ctx,
+        { debug: mock() } as unknown as PluginContext,
         `<html lang="en"><head><title>test</title></head></html>`,
         { path: ".", filename: "index.html" },
       );
@@ -66,7 +52,7 @@ describe("Entrypoint", () => {
 
     it("injects the link with found icon names into html", () => {
       const result = transformIndexHtml.call(
-        ctx,
+        { debug: mock() } as unknown as PluginContext,
         `<html lang="en"><head><title>test</title></head></html>`,
         { path: ".", filename: "index.html" },
       );
