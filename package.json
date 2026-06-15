@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-material-symbols",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Selective loading of Material Symbols for production",
   "main": "dist/index.js",
   "repository": {
@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/core": "^0.18.2",
-    "@biomejs/biome": "2.4.14",
+    "@biomejs/biome": "2.4.16",
     "@tsconfig/bun": "^1.0.8",
     "@types/bun": "^1.2.17",
     "@types/esquery": "^1.5.4",
@@ -68,6 +68,7 @@
     "icon",
     "font-icons",
     "vite",
-    "vitejs"
+    "vitejs",
+    "vite-plugin"
   ]
 }
