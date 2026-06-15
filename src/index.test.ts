@@ -1,6 +1,6 @@
 import { describe, expect, it, mock } from "bun:test";
 import { fail } from "node:assert/strict";
-import type { ModuleInfo, RolldownError, PluginContext } from "rolldown";
+import type { ModuleInfo, PluginContext, RolldownError } from "rolldown";
 import ast from "../tools/ast.json";
 import plugin from "./index";
 
