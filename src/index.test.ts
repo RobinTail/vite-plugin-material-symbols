@@ -1,6 +1,6 @@
 import { describe, expect, it, mock } from "bun:test";
 import { fail } from "node:assert/strict";
-import type { ModuleInfo, RolldownError } from "rolldown";
+import type { ModuleInfo, RolldownError, PluginContext } from "rolldown";
 import ast from "../tools/ast.json";
 import plugin from "./index";
 
@@ -53,9 +53,7 @@ describe("Entrypoint", () => {
     it("should find icon names", () => {
       const debug = mock();
       moduleParsed.call(
-        // @todo revisit when vite upgrades rolldown to 1.0.0
-        // biome-ignore lint/suspicious/noExplicitAny: mocking complexity
-        { debug, parse: () => ast } as any,
+        { debug, parse: () => ast } as unknown as PluginContext,
         { id: "file.tsx", code: "test" } as unknown as ModuleInfo,
       );
       expect(debug).toHaveBeenCalledTimes(3);
