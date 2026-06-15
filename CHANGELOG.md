@@ -2,6 +2,10 @@
 
 ## Version 0
 
+### v0.9.0
+
+- Supporting Node 26.
+
 ### v0.8.0
 
 - Replaced `getUrl` option with two new ones:

@@ -18,7 +18,7 @@ the font downloaded by the user.
 
 ## Requirements
 
-- Node.js `^22 || ^24`;
+- Node.js `^22 || ^24 || ^26`;
   - use the plugin version 0.6 for Node 20;
 - Vite `^8`
   - use the plugin version 0.6 for Vite 6 and 7;
