@@ -44,7 +44,7 @@
     "@biomejs/biome": "2.5.10",
     "@tsconfig/node22": "^22.0.0",
     "@types/esquery": "^1.5.4",
-    "@types/node": "^22.0.0",
+    "@types/node": "^24.0.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^6.0.1",
