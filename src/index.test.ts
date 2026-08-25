@@ -1,12 +1,14 @@
-import { describe, expect, it, mock } from "bun:test";
 import { fail } from "node:assert/strict";
-import type { ModuleInfo, PluginContext } from "rolldown";
+import { execSync } from "node:child_process";
+import { readFileSync } from "node:fs";
+import type { Rolldown } from "vite";
+import { describe, expect, it, vi } from "vitest";
 import ast from "../tools/ast.json";
 import plugin from "./index";
 
 describe("Entrypoint", () => {
   it("should be a function", () => {
-    expect(plugin).toBeFunction();
+    expect(plugin).toBeTypeOf("function");
   });
 
   it("should return object of certain structure", () => {
@@ -29,7 +31,7 @@ describe("Entrypoint", () => {
 
     it("injects the link to all symbols in dev mode", () => {
       const result = transformIndexHtml.call(
-        { debug: mock() } as unknown as PluginContext,
+        { debug: vi.fn() } as unknown as Rolldown.PluginContext,
         `<html lang="en"><head><title>test</title></head></html>`,
         { path: ".", filename: "index.html" },
       );
@@ -37,10 +39,10 @@ describe("Entrypoint", () => {
     });
 
     it("should find icon names", () => {
-      const debug = mock();
+      const debug = vi.fn();
       moduleParsed.call(
-        { debug, parse: () => ast } as unknown as PluginContext,
-        { id: "file.tsx", code: "test" } as unknown as ModuleInfo,
+        { debug, parse: () => ast } as unknown as Rolldown.PluginContext,
+        { id: "file.tsx", code: "test" } as unknown as Rolldown.ModuleInfo,
       );
       expect(debug).toHaveBeenCalledTimes(3);
       expect(debug.mock.calls).toEqual([
@@ -52,7 +54,7 @@ describe("Entrypoint", () => {
 
     it("injects the link with found icon names into html", () => {
       const result = transformIndexHtml.call(
-        { debug: mock() } as unknown as PluginContext,
+        { debug: vi.fn() } as unknown as Rolldown.PluginContext,
         `<html lang="en"><head><title>test</title></head></html>`,
         { path: ".", filename: "index.html" },
       );
@@ -63,9 +65,10 @@ describe("Entrypoint", () => {
 
 describe("System", () => {
   it("injects the link into index.html", async () => {
-    // @see https://github.com/oven-sh/bun/issues/3768
-    await Bun.$`NODE_ENV=production bun --bun vite -c tools/vite.config.ts build`;
-    const result = await Bun.file("./dist/tools/index.html").text();
+    execSync("NODE_ENV=production pnpm vite -c tools/vite.config.ts build", {
+      shell: "bash",
+    });
+    const result = readFileSync("./dist/tools/index.html", "utf-8");
     expect(
       result.includes(
         `<link rel="stylesheet" ` +
@@ -73,6 +76,6 @@ describe("System", () => {
           "family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;" +
           `icon_names=chevron_right,comment,home">`,
       ),
-    ).toBeTrue();
+    ).toBe(true);
   });
 });

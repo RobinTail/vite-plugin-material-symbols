@@ -1,6 +1,6 @@
-// Bun Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Entrypoint Operation 0 injects the link to all symbols in dev mode 1`] = `
+exports[`Entrypoint > Operation 0 > injects the link to all symbols in dev mode 1`] = `
 {
   "html": "<html lang="en"><head><title>test</title></head></html>",
   "tags": [
@@ -16,7 +16,7 @@ exports[`Entrypoint Operation 0 injects the link to all symbols in dev mode 1`] 
 }
 `;
 
-exports[`Entrypoint Operation 0 injects the link with found icon names into html 1`] = `
+exports[`Entrypoint > Operation 0 > injects the link with found icon names into html 1`] = `
 {
   "html": "<html lang="en"><head><title>test</title></head></html>",
   "tags": [
@@ -32,7 +32,7 @@ exports[`Entrypoint Operation 0 injects the link with found icon names into html
 }
 `;
 
-exports[`Entrypoint Operation 1 injects the link to all symbols in dev mode 1`] = `
+exports[`Entrypoint > Operation 1 > injects the link to all symbols in dev mode 1`] = `
 {
   "html": "<html lang="en"><head><title>test</title></head></html>",
   "tags": [
@@ -65,7 +65,7 @@ exports[`Entrypoint Operation 1 injects the link to all symbols in dev mode 1`] 
 }
 `;
 
-exports[`Entrypoint Operation 1 injects the link with found icon names into html 1`] = `
+exports[`Entrypoint > Operation 1 > injects the link with found icon names into html 1`] = `
 {
   "html": "<html lang="en"><head><title>test</title></head></html>",
   "tags": [
