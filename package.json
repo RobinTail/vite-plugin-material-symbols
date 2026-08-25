@@ -15,7 +15,7 @@
     "prebuild": "tsc --noEmit",
     "build": "pnpm tsdown",
     "test": "vitest run",
-    "mdfix": "pnpm dlx prettier *.md --write",
+    "mdfix": "oxfmt '*.md' --write",
     "preversion": "echo 'checking working tree...'",
     "postversion": "git push && git push --tags",
     "prepublishOnly": "pnpm lint && pnpm test && pnpm build"
@@ -49,6 +49,7 @@
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/coverage-v8": "^4.1.11",
+    "oxfmt": "0.64.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tsdown": "^0.22.0",
