@@ -11,12 +11,14 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "lint": "bun run biome check",
+    "lint": "pnpm biome check",
     "prebuild": "tsc --noEmit",
-    "build": "bunx --bun tsdown",
-    "mdfix": "bunx --bun prettier *.md --write",
-    "version": "bun run tools/version.ts",
-    "prepublishOnly": "bun lint && bun test && bun run build"
+    "build": "pnpm tsdown",
+    "test": "vitest run",
+    "mdfix": "pnpm prettier *.md --write",
+    "preversion": "echo 'checking working tree...'",
+    "postversion": "git push && git push --tags",
+    "prepublishOnly": "pnpm lint && pnpm test && pnpm build"
   },
   "exports": {
     ".": {
@@ -29,7 +31,7 @@
     "*.md"
   ],
   "engines": {
-    "node": "^22 || ^24 || ^26"
+    "node": "^22.18 || ^24 || ^26"
   },
   "peerDependencies": {
     "vite": "^8.0.0"
@@ -40,18 +42,18 @@
   "devDependencies": {
     "@arethetypeswrong/core": "^0.18.2",
     "@biomejs/biome": "2.5.10",
-    "@tsconfig/bun": "^1.0.8",
-    "@types/bun": "^1.2.17",
+    "@tsconfig/node22": "^22.0.0",
     "@types/esquery": "^1.5.4",
+    "@types/node": "^22.0.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "@types/semver": "^7.7.0",
     "@vitejs/plugin-react": "^6.0.1",
+    "@vitest/coverage-v8": "^4.1.11",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "semver": "^7.7.2",
     "tsdown": "^0.22.0",
-    "typescript": "^6.0.0"
+    "typescript": "^6.0.0",
+    "vitest": "^4.1.11"
   },
   "keywords": [
     "css",

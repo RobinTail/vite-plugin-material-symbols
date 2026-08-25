@@ -8,9 +8,7 @@
     "enabled": true,
     "indentStyle": "space"
   },
-  "javascript": {
-    "globals": ["Bun"]
-  },
+  "javascript": {},
   "linter": {
     "enabled": true,
     "rules": {

@@ -1,5 +1,5 @@
-import { describe, expect, it } from "bun:test";
 import type { Node } from "estree";
+import { describe, expect, it } from "vitest";
 import {
   addIconNamesParam,
   defaultFontUrl,
@@ -10,13 +10,13 @@ import {
 describe("Helpers", () => {
   describe("isStringLiteral", () => {
     it("validates a Literal with a string value", () => {
-      expect(isStringLiteral({ type: "Literal", value: "test" })).toBeTrue();
+      expect(isStringLiteral({ type: "Literal", value: "test" })).toBe(true);
     });
     it.each<Node>([
       { type: "Literal", value: 123 },
       { type: "Identifier", name: "test" },
     ])("invalidates others %#", (subject) => {
-      expect(isStringLiteral(subject)).toBeFalse();
+      expect(isStringLiteral(subject)).toBe(false);
     });
   });
 
