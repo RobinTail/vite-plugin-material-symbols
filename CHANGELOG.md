@@ -2,6 +2,11 @@
 
 ## Version 0
 
+### v0.10.0
+
+- Supported Node.js versions: `^22.18 || ^24 || ^26`.
+- The project migrated from bun to pnpm.
+
 ### v0.9.0
 
 - Supporting Node 26.

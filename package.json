@@ -15,7 +15,7 @@
     "prebuild": "tsc --noEmit",
     "build": "pnpm tsdown",
     "test": "vitest run",
-    "mdfix": "pnpm prettier *.md --write",
+    "mdfix": "pnpm dlx prettier *.md --write",
     "preversion": "echo 'checking working tree...'",
     "postversion": "git push && git push --tags",
     "prepublishOnly": "pnpm lint && pnpm test && pnpm build"
