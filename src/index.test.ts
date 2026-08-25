@@ -38,6 +38,24 @@ describe("Entrypoint", () => {
       expect(result).toMatchSnapshot();
     });
 
+    it("skips when code is empty", () => {
+      const debug = vi.fn();
+      moduleParsed.call(
+        { debug, parse: () => ast } as unknown as Rolldown.PluginContext,
+        { id: "file.tsx", code: undefined } as unknown as Rolldown.ModuleInfo,
+      );
+      expect(debug).not.toHaveBeenCalled();
+    });
+
+    it("skips when module id does not match", () => {
+      const debug = vi.fn();
+      moduleParsed.call(
+        { debug, parse: () => ast } as unknown as Rolldown.PluginContext,
+        { id: "file.txt", code: "test" } as unknown as Rolldown.ModuleInfo,
+      );
+      expect(debug).not.toHaveBeenCalled();
+    });
+
     it("should find icon names", () => {
       const debug = vi.fn();
       moduleParsed.call(
