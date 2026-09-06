@@ -47,14 +47,14 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^6.0.1",
-    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/coverage-v8": "^5.0.0",
     "oxfmt": "0.66.0",
     "oxlint": "^1.79.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tsdown": "^0.22.0",
     "typescript": "^7.0.2",
-    "vitest": "^4.1.11"
+    "vitest": "^5.0.0"
   },
   "packageManager": "pnpm@12.3.1",
   "keywords": [
