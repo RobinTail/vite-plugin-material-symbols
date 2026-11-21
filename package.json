@@ -54,9 +54,10 @@
     "react-dom": "^19.1.0",
     "tsdown": "^0.23.0",
     "typescript": "7.1.0-beta",
+    "vite": "^8.3.8",
     "vitest": "^5.0.0"
   },
-  "packageManager": "pnpm@12.20.0",
+  "packageManager": "pnpm@12.21.0",
   "keywords": [
     "css",
     "html",
